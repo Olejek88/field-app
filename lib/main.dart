@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_field_app/app_home.dart';
-import 'package:flutter_field_app/app_enter_diff.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,4 @@ class MyApp extends StatefulWidget {
       home: new AppHome(),
     );
   }
-
-  @override
-  _MyAppState createState() => new _MyAppState();
 }

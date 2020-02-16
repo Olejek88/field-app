@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class AppEnterDigit extends State<MyApp> {
-  int _currentValue = 1;
+class AppEnterDigit extends StatelessWidget {
+  final double _currentDoubleValue = 1.0;
 
   @override
   Widget build(BuildContext context) {
@@ -12,18 +12,18 @@ class AppEnterDigit extends State<MyApp> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new NumberPicker.integer(
-                initialValue: _currentValue,
-                minValue: 0,
-                maxValue: 100,
-                onChanged: setState(() => _currentDoubleValue = value)(newValue) =>
-                    setState(() => _currentValue = newValue)),
-            new Text("Current number: $_currentValue"),
+            new NumberPickerDialog.decimal(
+              minValue: 1,
+              maxValue: 5,
+              decimalPlaces: 2,
+              initialDoubleValue: _currentDoubleValue,
+              title: new Text("Pick a decimal number"),
+            )
           ],
         ),
       ),
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text('Add value'),
       ),
     );
   }

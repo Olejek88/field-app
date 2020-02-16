@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_insta_clone/app_body.dart';
+import 'package:flutter_field_app/app_body.dart';
 
 class AppHome extends StatelessWidget {
   static const String _title = 'Field Value App';
