@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_insta_clone/insta_home.dart';
+import 'package:flutter_field_app/app_home.dart';
+import 'package:flutter_field_app/app_enter_diff.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Instagram',
+      title: 'Field App',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
           primarySwatch: Colors.blue,
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
           primaryTextTheme: TextTheme(
               title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(title: TextStyle(color: Colors.black))),
-      home: new InstaHome(),
+      home: new AppHome(),
     );
   }
+
+  @override
+  _MyAppState createState() => new _MyAppState();
 }

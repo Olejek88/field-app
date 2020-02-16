@@ -1,19 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_insta_clone/insta_body.dart';
+import 'package:flutter_insta_clone/app_body.dart';
 
-class InstaHome extends StatelessWidget {
+class AppHome extends StatelessWidget {
+  static const String _title = 'Field Value App';
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
     elevation: 1.0,
-    leading: new Icon(Icons.camera_alt),
-    title: SizedBox(
-        height: 35.0, child: Image.asset("assets/images/insta_logo.png")),
+    leading: new Icon(Icons.laptop),
+    title: Text(_title),
     actions: <Widget>[
       Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: Icon(Icons.send),
-      )
+        padding: const EdgeInsets.only(right: 12.0)
+      ),
+      IconButton(
+        icon: const Icon(Icons.add_alert),
+        tooltip: 'Add alerts',
+        onPressed: () {
+        },
+      ),
+      IconButton(
+        icon: const Icon(Icons.build),
+        tooltip: 'Settings',
+        onPressed: () {
+        },
+      ),
+      IconButton(
+        icon: const Icon(Icons.cached),
+        tooltip: 'Refresh',
+        onPressed: () {
+        },
+      ),
     ],
   );
 
@@ -21,7 +38,7 @@ class InstaHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: topBar,
-        body: new InstaBody(),
+        body: new AppBody(),
         bottomNavigationBar: new Container(
           color: Colors.white,
           height: 50.0,
@@ -33,31 +50,31 @@ class InstaHome extends StatelessWidget {
               children: <Widget>[
                 new IconButton(
                   icon: Icon(
-                    Icons.home,
+                    Icons.text_fields,
                   ),
                   onPressed: () {},
                 ),
                 new IconButton(
                   icon: Icon(
-                    Icons.search,
+                    Icons.looks_5,
                   ),
                   onPressed: null,
                 ),
                 new IconButton(
                   icon: Icon(
-                    Icons.add_box,
+                    Icons.assignment,
                   ),
                   onPressed: null,
                 ),
                 new IconButton(
                   icon: Icon(
-                    Icons.favorite,
+                    Icons.assessment,
                   ),
                   onPressed: null,
                 ),
                 new IconButton(
                   icon: Icon(
-                    Icons.account_box,
+                    Icons.share,
                   ),
                   onPressed: null,
                 ),

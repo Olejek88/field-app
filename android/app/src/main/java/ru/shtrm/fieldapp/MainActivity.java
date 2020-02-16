@@ -1,4 +1,4 @@
-package com.example.flutterinstaclone;
+package ru.shtrm.fieldapp;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
