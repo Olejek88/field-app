@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
           primarySwatch: Colors.blue,
-          primaryColor: Colors.black,
-          primaryIconTheme: IconThemeData(color: Colors.black),
+          primaryColor: Colors.blue,
+          primaryIconTheme: IconThemeData(color: Colors.blue),
           primaryTextTheme: TextTheme(
-              title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
-          textTheme: TextTheme(title: TextStyle(color: Colors.black))),
+              title: TextStyle(color: Colors.black54, fontFamily: "Aveny")),
+          textTheme: TextTheme(title: TextStyle(color: Colors.black54))),
       home: new AppHome(),
     );
   }
