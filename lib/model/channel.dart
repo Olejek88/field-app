@@ -1,7 +1,7 @@
 import 'package:floor/floor.dart';
 
 @entity
-class MeasureType {
+class Channel {
   @primaryKey
   final int id;
   final String uuid;
@@ -9,5 +9,5 @@ class MeasureType {
   final int createdAt;
   final int changedAt;
 
-  MeasureType(this.id, this.uuid, this.title, this.createdAt, this.changedAt);
+  Channel(this.id, this.uuid, this.title, this.createdAt, this.changedAt);
 }

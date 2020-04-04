@@ -1,0 +1,3 @@
+library constants;
+
+const String MEASURE_TYPE_NUMBER = "6391E3EF-1A1C-4BFF-9DF6-D5139AA025C1";
