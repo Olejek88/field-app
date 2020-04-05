@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_field_app/app_body.dart';
+import 'package:flutter_field_app/database.dart';
+
+import 'app_enter_digit.dart';
 
 class AppHome extends StatelessWidget {
   static const String _title = 'Field Value App';
+  final AppDatabase myDb;
+
+  AppHome(this.myDb);
+
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
@@ -10,26 +17,21 @@ class AppHome extends StatelessWidget {
     leading: new Icon(Icons.laptop),
     title: Text(_title),
     actions: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0)
-      ),
+      Padding(padding: const EdgeInsets.only(right: 12.0)),
       IconButton(
         icon: const Icon(Icons.add_alert),
         tooltip: 'Add alerts',
-        onPressed: () {
-        },
+        onPressed: () {},
       ),
       IconButton(
         icon: const Icon(Icons.build),
         tooltip: 'Settings',
-        onPressed: () {
-        },
+        onPressed: () {},
       ),
       IconButton(
         icon: const Icon(Icons.cached),
-        tooltip: 'Refresh',
-        onPressed: () {
-        },
+        tooltip: 'Update',
+        onPressed: () {},
       ),
     ],
   );
@@ -50,25 +52,19 @@ class AppHome extends StatelessWidget {
               children: <Widget>[
                 new IconButton(
                   icon: Icon(
-                    Icons.text_fields,
+                    Icons.add_circle,
                   ),
-                  onPressed: () {},
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.looks_5,
-                  ),
-                  onPressed: null,
-                ),
-                new IconButton(
-                  icon: Icon(
-                    Icons.assignment,
-                  ),
-                  onPressed: null,
+                  onPressed: _showEnterDigit,
                 ),
                 new IconButton(
                   icon: Icon(
                     Icons.assessment,
+                  ),
+                  onPressed: _showEnterDigit,
+                ),
+                new IconButton(
+                  icon: Icon(
+                    Icons.assignment,
                   ),
                   onPressed: null,
                 ),
@@ -82,5 +78,9 @@ class AppHome extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  void _showEnterDigit() {
+    AppEnterDigit();
   }
 }

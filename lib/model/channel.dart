@@ -2,7 +2,7 @@ import 'package:floor/floor.dart';
 
 @entity
 class Channel {
-  @primaryKey
+  @PrimaryKey(autoGenerate: true)
   final int id;
   final String uuid;
   final String title;

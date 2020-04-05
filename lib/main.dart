@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_field_app/app_home.dart';
 
-void main() => runApp(new MyApp());
+import 'database.dart';
 
-class MyApp extends StatelessWidget {
+//void main() => runApp(new MyApp());
+Future<void> main() async {
+/*
+  final database = await $FloorAppDatabase.databaseBuilder('app_database.db')
+      .addMigrations([migration1to2])
+      .build();
+*/
+  AppDatabase myDatabase = AppDatabase();
+  await myDatabase.initialDatabase();
+
+  runApp(MaterialApp(
+    title: 'Field App',
+    home: App(myDatabase),
+  ));
+}
+
+class App extends StatelessWidget {
+  final AppDatabase myDatabase;
+
+  App(this.myDatabase);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Field App',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
           primarySwatch: Colors.blue,
@@ -17,7 +35,7 @@ class MyApp extends StatelessWidget {
           primaryTextTheme: TextTheme(
               title: TextStyle(color: Colors.black54, fontFamily: "Aveny")),
           textTheme: TextTheme(title: TextStyle(color: Colors.black54))),
-      home: new AppHome(),
+      home: new AppHome(this.myDatabase),
     );
   }
 }

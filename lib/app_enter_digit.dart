@@ -8,6 +8,8 @@ class AppEnterDigit extends StatelessWidget {
   //final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
   //final person = await database.findPersonById(1);
   //await database.insertPerson(person);
+  //MyDatabase myDatabase = MyDatabase();
+  //final userDao = await myDatabase.initialDatabase();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,14 @@ class AppEnterDigit extends StatelessWidget {
       appBar: new AppBar(
         title: new Text('Add value'),
       ),
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(Icons.add_circle),
+        onPressed: _saveValue,
+      ),
     );
+  }
+
+  void _saveValue() {
+    _currentDoubleValue;
   }
 }
