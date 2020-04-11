@@ -5,13 +5,11 @@ import 'database.dart';
 
 //void main() => runApp(new MyApp());
 Future<void> main() async {
-/*
-  final database = await $FloorAppDatabase.databaseBuilder('app_database.db')
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final myDatabase = await $FloorAppDatabase.databaseBuilder('app_database.db')
       .addMigrations([migration1to2])
       .build();
-*/
-  AppDatabase myDatabase = AppDatabase();
-  await myDatabase.initialDatabase();
 
   runApp(MaterialApp(
     title: 'Field App',

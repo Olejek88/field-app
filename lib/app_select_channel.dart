@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:numberpicker/numberpicker.dart';
-
-import 'package:flutter/material.dart';
+import 'package:flutter_field_app/database.dart';
+import 'model/measure_type.dart';
 
 
 class AppSelectChannelWidget extends StatefulWidget {
-  AppSelectChannelWidget({Key key}) : super(key: key);
+  final AppDatabase myDb;
+
+  AppSelectChannelWidget(this.myDb);
+
+  //AppSelectChannelWidget({Key key}) : super(key: key);
 
   @override
   _AppSelectChannelWidgetState createState() =>
@@ -15,29 +17,28 @@ class AppSelectChannelWidget extends StatefulWidget {
 
 class _AppSelectChannelWidgetState extends State<AppSelectChannelWidget> {
 
-  MeasureTypeDao findAllMeasureTypes()
-
-  List _channels =
-  ;
-
   List<DropdownMenuItem<String>> _dropDownMenuItems;
-  String _currentCity;
+  String _currentMeasureType;
 
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
-    _currentCity = _dropDownMenuItems[0].value;
+    _currentMeasureType = _dropDownMenuItems[0].value;
     super.initState();
   }
 
   List<DropdownMenuItem<String>> getDropDownMenuItems() {
     List<DropdownMenuItem<String>> items = new List();
-    for (String city in _cities) {
-      items.add(new DropdownMenuItem(
-          value: city,
-          child: new Text(city)
-      ));
-    }
+    widget.myDb.measureTypeDao.findAllMeasureTypes()
+        .then((List<MeasureType> measureTypes) {
+      for (MeasureType measureType in measureTypes) {
+        items.add(new DropdownMenuItem(
+            value: measureType.uuid,
+            child: new Text(measureType.title)
+        ));
+      }
+      return items;
+    }).catchError((e) {});
     return items;
   }
 
@@ -55,7 +56,7 @@ class _AppSelectChannelWidgetState extends State<AppSelectChannelWidget> {
                 padding: new EdgeInsets.all(16.0),
               ),
               new DropdownButton(
-                value: _currentCity,
+                value: _currentMeasureType,
                 items: _dropDownMenuItems,
                 onChanged: changedDropDownItem,
               )
@@ -65,10 +66,9 @@ class _AppSelectChannelWidgetState extends State<AppSelectChannelWidget> {
     );
   }
 
-  void changedDropDownItem(String selectedCity) {
+  void changedDropDownItem(String selectedMeasureType) {
     setState(() {
-      _currentCity = selectedCity;
+      _currentMeasureType = selectedMeasureType;
     });
   }
-
 }

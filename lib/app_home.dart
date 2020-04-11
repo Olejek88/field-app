@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_field_app/app_body.dart';
+import 'package:flutter_field_app/app_select_channel.dart';
 import 'package:flutter_field_app/database.dart';
 
 import 'app_enter_digit.dart';
@@ -60,7 +61,7 @@ class AppHome extends StatelessWidget {
                   icon: Icon(
                     Icons.assessment,
                   ),
-                  onPressed: _showEnterDigit,
+                  onPressed: _selectChannel,
                 ),
                 new IconButton(
                   icon: Icon(
@@ -83,4 +84,9 @@ class AppHome extends StatelessWidget {
   void _showEnterDigit() {
     AppEnterDigit();
   }
+
+  void _selectChannel() {
+    AppSelectChannelWidget(myDb);
+  }
+
 }
