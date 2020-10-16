@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class AppEnterDigit extends StatelessWidget {
-  final double _currentDoubleValue = 1.0;
+  double _currentDoubleValue = 1.0;
 
   //final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
   //final person = await database.findPersonById(1);
@@ -39,6 +39,6 @@ class AppEnterDigit extends StatelessWidget {
   }
 
   void _saveValue() {
-    _currentDoubleValue;
+    _currentDoubleValue = 0;
   }
 }

@@ -6,7 +6,10 @@ import 'model/measure_type.dart';
 class AppSelectChannelWidget extends StatefulWidget {
   final AppDatabase myDb;
 
-  AppSelectChannelWidget(this.myDb);
+  AppSelectChannelWidget({
+    Key key,
+    @required this.myDb,
+  }) : super(key: key);
 
   //AppSelectChannelWidget({Key key}) : super(key: key);
 
@@ -23,7 +26,7 @@ class _AppSelectChannelWidgetState extends State<AppSelectChannelWidget> {
   @override
   void initState() {
     _dropDownMenuItems = getDropDownMenuItems();
-    _currentMeasureType = _dropDownMenuItems[0].value;
+    //_currentMeasureType = _dropDownMenuItems[0].value;
     super.initState();
   }
 
@@ -51,12 +54,12 @@ class _AppSelectChannelWidgetState extends State<AppSelectChannelWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Text("Please choose your city: "),
+              new Text("Тип измеряемой величины "),
               new Container(
                 padding: new EdgeInsets.all(16.0),
               ),
               new DropdownButton(
-                value: _currentMeasureType,
+                //value: _currentMeasureType,
                 items: _dropDownMenuItems,
                 onChanged: changedDropDownItem,
               )

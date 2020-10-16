@@ -9,7 +9,10 @@ class AppHome extends StatelessWidget {
   static const String _title = 'Field Value App';
   final AppDatabase myDb;
 
-  AppHome(this.myDb);
+  AppHome({
+    Key key,
+    @required this.myDb,
+  }) : super(key: key);
 
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
@@ -41,7 +44,9 @@ class AppHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: topBar,
-        body: new AppBody(),
+        body: AppBody(
+            myDb: myDb
+        ),
         bottomNavigationBar: new Container(
           color: Colors.white,
           height: 50.0,
@@ -86,7 +91,9 @@ class AppHome extends StatelessWidget {
   }
 
   void _selectChannel() {
-    AppSelectChannelWidget(myDb);
+    AppSelectChannelWidget(
+        myDb: myDb
+    );
   }
 
 }

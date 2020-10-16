@@ -1,3 +1,4 @@
+import 'package:appspector/appspector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_field_app/app_home.dart';
 
@@ -6,21 +7,18 @@ import 'database.dart';
 //void main() => runApp(new MyApp());
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final myDatabase = await $FloorAppDatabase.databaseBuilder('app_database.db')
+  runAppSpector();
+  final myDb = await $FloorAppDatabase.databaseBuilder('app_database.db')
       .addMigrations([migration1to2])
       .build();
-
-  runApp(MaterialApp(
-    title: 'Field App',
-    home: App(myDatabase),
-  ));
+  runApp(App(myDb));
 }
 
 class App extends StatelessWidget {
-  final AppDatabase myDatabase;
+  final AppDatabase myDb;
 
-  App(this.myDatabase);
+  const App(this.myDb);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,16 @@ class App extends StatelessWidget {
           primaryTextTheme: TextTheme(
               title: TextStyle(color: Colors.black54, fontFamily: "Aveny")),
           textTheme: TextTheme(title: TextStyle(color: Colors.black54))),
-      home: new AppHome(this.myDatabase),
+      home: AppHome(
+          myDb: myDb
+      ),
     );
   }
+}
+
+void runAppSpector() {
+  var config = new Config();
+  config.androidApiKey =
+  "android_MWM0ZDU3ZmQtODhhNC00ODlhLTg5Y2QtNTI2NDg0OTIyNTkw";
+  AppSpectorPlugin.run(config);
 }
